@@ -1,6 +1,12 @@
   
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+
+//Using the mongoose ODM. Here we connect to the database created with mongoDB.
+mongoose.connect('mongodb://localhost/poetry');
+let db = mongoose.connection;
+
 
 // Initializes application
 const app = express();
@@ -16,6 +22,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res){
    res.render('index', {
       title: 'TARNATION'
+   });
+});
+
+app.get('/contact', function(req, res){
+   res.render('index', {
+      title: 'CONTACT'
    });
 });
 
