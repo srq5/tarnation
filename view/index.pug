@@ -3,3 +3,8 @@ extends layout
 block content
 
     h1 #{title}
+
+    ul 
+        each poem, i in poems 
+            li= poem.title
+            li= poem.body
