@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 //Using the mongoose ODM. Here we connect to the database created with mongoDB.
 mongoose.connect('mongodb://localhost/poetry');
