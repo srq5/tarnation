@@ -26,10 +26,17 @@ let Poem = require('./model/poem')
 app.set('views', path.join(__dirname, 'view'));
 app.set('view engine', 'pug')
 
+//bodyParser middleware
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 
 //The static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+//Basic get routes
 app.get('/', function (req, res) {
    Poem.find({}, function (err, poems) {
       res.render('index', {
@@ -41,8 +48,14 @@ app.get('/', function (req, res) {
 });
 
 app.get('/contact', function (req, res) {
-   res.render('index', {
+   res.render('contact', {
       title: 'CONTACT'
+   });
+});
+
+app.get('/about', function (req, res) {
+   res.render('about', {
+      title: 'about'
    });
 });
 
